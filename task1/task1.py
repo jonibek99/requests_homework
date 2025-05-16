@@ -19,3 +19,20 @@ Your implementation below:
 """
 
 # Your implementation here
+import requests
+def  get_post_data(post_id):
+  url=f"https://jsonplaceholder.typicode.com/posts/{post_id}"
+  a=requests.get(url)
+  if a.status_code==200:
+    data=a.json()
+    return {
+      "title":data["title"],
+      "body":data["body"],
+    }
+  else:
+    return {'eror'}
+print(get_post_data(1))
+
+
+
+

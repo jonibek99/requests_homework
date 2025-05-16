@@ -29,3 +29,18 @@ Your implementation below:
 """
 
 # Your implementation here
+import requests 
+
+def get_post_data(post_id):
+    url = f"https://jsonplaceholder.typicode.com/posts/{post_id}" 
+    response = requests.get(url) 
+
+    if response.status_code == 200: 
+        data = response.json() 
+        return {
+            "title": data["title"],
+            "body": data["body"]
+        }
+    else:
+        return {"error": "Post not found"}  
+print(get_post_data(1))
